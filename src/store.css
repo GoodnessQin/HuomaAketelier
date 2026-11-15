@@ -711,3 +711,8 @@ a:hover .pimg.has2 .pimg-b{opacity:1}
   .stoh::before{background-position:center}
   .stoh h1{padding-bottom:26px}
 }
+/* Colour choices on a piece: fixed grid from the left, so 2 colours sit together like 7 do */
+@media(max-width:820px){
+  .spanel .swatches{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:16px 6px;justify-content:start}
+  .spanel .swatches button{width:auto;min-width:0}
+}
