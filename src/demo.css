@@ -1,0 +1,12 @@
+/* ---------- Demo build only: pretend Paystack window ---------- */
+.demo-pay{position:fixed;inset:0;z-index:100;background:#000a;display:grid;place-items:center;padding:16px;animation:fade .2s both;font-family:var(--inter)}
+.demo-pay-box{width:min(380px,100%);background:#fff;color:#111;border-radius:10px;padding:26px 24px 20px;text-align:center;box-shadow:0 20px 50px #0007;animation:rise .35s var(--ease) both}
+.demo-pay-tag{font:600 11px var(--inter);letter-spacing:.06em;text-transform:uppercase;color:#0BA4DB}
+.demo-pay-mail{font-size:13px;color:#666;margin-top:14px}
+.demo-pay-amt{font-size:16px;margin:4px 0 18px}.demo-pay-amt b{color:#0BA4DB}
+.demo-pay-card,.demo-pay-bank{border:1px solid #ddd;border-radius:6px;padding:12px;display:grid;gap:4px;font-size:14px;margin-bottom:18px}
+.demo-pay-bank small{font-size:11px;color:#666}
+.demo-pay-go{width:100%;background:#3BB75E;color:#fff;border-radius:6px;padding:13px;font:600 14px var(--inter)}
+.demo-pay-go:disabled{opacity:.7}
+.demo-pay-x{margin-top:12px;font-size:12px;color:#666;text-decoration:underline}
+.demo-pay-note{font-size:11px;color:#999;margin-top:14px}
