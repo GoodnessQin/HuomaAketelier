@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSite } from '../lib/site.jsx'
 
@@ -47,12 +48,12 @@ export function Header({ overlay = false, split = false, onSearch }) {
   const loc = useLocation()
   const [stuck, setStuck] = useState(false)
   useEffect(() => { setOpen(false); setSearch(false); setStuck(false) }, [loc.pathname, loc.search])
-  // Sticky header: slides back in when the customer scrolls up (not on the split piece page)
+  // Header stays with you: see-through over the hero, then a translucent cream bar once you scroll.
+  // (On the desktop piece page the photo column has its own layout, so it stays as it is.)
   useEffect(() => {
-    if (split) return
-    let last = scrollY
-    const on = () => { const y = scrollY; setStuck(y > 220 && y < last - 2 ? true : y > last + 2 || y < 120 ? false : s => s); last = y }
-    addEventListener('scroll', on, { passive: true }); return () => removeEventListener('scroll', on)
+    const on = () => setStuck(scrollY > 40 && !(split && innerWidth > 820))
+    on(); addEventListener('scroll', on, { passive: true }); addEventListener('resize', on)
+    return () => { removeEventListener('scroll', on); removeEventListener('resize', on) }
   }, [split])
   useEffect(() => { document.body.style.overflow = open ? 'hidden' : ''; return () => { document.body.style.overflow = '' } }, [open])
   const openSearch = () => (onSearch ? onSearch() : setSearch(true))
@@ -74,9 +75,17 @@ export function Header({ overlay = false, split = false, onSearch }) {
           <button className="hdr-burger" onClick={() => setOpen(o => !o)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}><i /><i /><i /></button>
         </div>
       </header>
-      {open && (
-        <div className="mmenu" role="dialog" aria-label="Menu" onClick={e => e.target === e.currentTarget && setOpen(false)}>
+      {open && createPortal(
+        <div className="mmenu" role="dialog" aria-modal="true" aria-label="Menu" onClick={e => e.target === e.currentTarget && setOpen(false)}>
           <div className="mmenu-panel">
+            <div className="mmenu-top">
+              <button className="mmenu-x" onClick={() => setOpen(false)} aria-label="Close menu"><i /><i /></button>
+              <Link to="/" className="mmenu-logo" aria-label="Huoma Akwetelier home"><Mark width={34} /></Link>
+              <div className="mmenu-icons">
+                <button onClick={() => { setOpen(false); openSearch() }} aria-label="Search"><SearchIcon /></button>
+                <Link to="/bag" className="hdr-bag">Bag{count > 0 && <span>&nbsp;({count})</span>}</Link>
+              </div>
+            </div>
             <nav className="mmenu-main">
               <NavLink to="/shop" end>Shop all</NavLink>
               {menuCollections.map(c => <NavLink key={c.slug} to={`/shop/${c.slug}`}>{c.name}</NavLink>)}
@@ -88,7 +97,7 @@ export function Header({ overlay = false, split = false, onSearch }) {
               <Link to="/favourites"><HeartIcon /> Favourites{favs.length > 0 && ` (${favs.length})`}</Link>
             </nav>
           </div>
-        </div>
+        </div>, document.body
       )}
       {search && <SearchSheet onClose={() => setSearch(false)} />}
     </>
@@ -119,13 +128,14 @@ export function Sheet({ onClose, children, label, className = '' }) {
     document.addEventListener('keydown', esc); document.body.style.overflow = 'hidden'
     return () => { document.removeEventListener('keydown', esc); document.body.style.overflow = '' }
   }, [onClose])
-  return (
+  return createPortal(
     <div className="sscrim" onMouseDown={e => e.target === e.currentTarget && onClose()}>
       <div className={'sheet ' + className} role="dialog" aria-modal="true" aria-label={label}>
         <button className="sheet-handle" onClick={onClose} aria-label="Close" />
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -143,6 +153,7 @@ export function SearchSheet({ onClose }) {
       <form className="sq" onSubmit={e => { e.preventDefault(); if (ql) go(q.trim()) }}>
         <input autoFocus value={q} onChange={e => setQ(e.target.value)} placeholder="Type a piece or colour" aria-label="Search pieces" />
         <button aria-label="Search"><SearchIcon /></button>
+        <button type="button" className="sq-close" onClick={onClose}>Close</button>
       </form>
       {ql ? (
         <>

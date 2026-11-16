@@ -25,9 +25,9 @@ export const CONTENT = {
     // Carousel cards. Each one opens a collection; several cards can open the same collection.
     // Leave the photo or line empty to use the collection's own.
     cards: [
-      { collection: 'bespoke', image: '/seed/col-bespoke.jpg', text: '' },
-      { collection: 'ready-to-wear', image: '/seed/col-rtw.jpg', text: '' },
-      { collection: 'mesh-accessories', image: '/seed/col-mesh.jpg', text: '' },
+      { collection: 'bespoke', image: '/seed/loom.jpg', text: '' },
+      { collection: 'ready-to-wear', image: '/seed/hat.jpg', text: '' },
+      { collection: 'mesh-accessories', image: '/seed/mesh.jpg', text: '' },
       { collection: 'bespoke', image: '/seed/nne-full.jpg', text: 'Cut to your measure, from the weave you choose.' },
       { collection: 'ready-to-wear', image: '/seed/udo2.jpg', text: 'Handwoven Akwete you can wear this week.' },
       { collection: 'mesh-accessories', image: '/seed/mesh2.jpg', text: 'Woven details to finish the look.' },
@@ -116,9 +116,9 @@ export const CONTENT = {
 
 // The three collections. Add more in Admin > Collections when the range grows.
 export const DEMO_COLLECTIONS = [
-  ['bespoke', 'Bespoke', 'One-of-one forms, made after your order is confirmed.', 'Made for you', '/seed/col-bespoke.jpg'],
-  ['ready-to-wear', 'Ready-to-Wear', 'Considered pieces available now for quick dispatch.', 'In stock', '/seed/col-rtw.jpg'],
-  ['mesh-accessories', 'Mesh & Accessories', 'Finishing pieces, ready for delivery without the wait.', 'In stock', '/seed/col-mesh.jpg'],
+  ['bespoke', 'Bespoke', 'One-of-one forms, made after your order is confirmed.', 'Made for you', '/seed/loom.jpg'],
+  ['ready-to-wear', 'Ready-to-Wear', 'Considered pieces available now for quick dispatch.', 'In stock', '/seed/hat.jpg'],
+  ['mesh-accessories', 'Mesh & Accessories', 'Finishing pieces, ready for delivery without the wait.', 'In stock', '/seed/mesh.jpg'],
 ].map(([slug, name, tagline, badge, image_url], i) => ({ slug, name, tagline, badge, image_url, sort: i + 1, shop_tab: true }))
 const ALL = COLOUR_PRESETS.map(([name, hex]) => ({ name, hex }))
 export const DEMO_PRODUCTS = [

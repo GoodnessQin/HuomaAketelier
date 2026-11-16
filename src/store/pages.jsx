@@ -21,9 +21,11 @@ export function Home() {
       <section className="shero2" style={{ '--img': `url(${h.hero_image})` }}>
         <Header overlay />
         <div className="shero2-copy">
-          {h.hero_eyebrow && <small className="shero2-eyebrow">{h.hero_eyebrow}</small>}
-          <h1>{h.hero_title}</h1>
-          <p>{h.hero_subtitle}</p>
+          <div className="shero2-text">
+            {h.hero_eyebrow && <small className="shero2-eyebrow">{h.hero_eyebrow}</small>}
+            <h1>{h.hero_title}</h1>
+            <p>{h.hero_subtitle}</p>
+          </div>
           <div className="shero2-cta">
             <SBtn to="/shop" className="hbtn">{h.hero_cta}</SBtn>
             {h.waitlist_cta && <SBtn to={h.waitlist_link || '/odogwu'} className="hbtn outline">{h.waitlist_cta}</SBtn>}

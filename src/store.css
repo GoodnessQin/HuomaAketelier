@@ -222,7 +222,7 @@ a:hover .pimg.has2 .pimg-b{opacity:1}
 .empty-s.tall{padding-top:180px}.empty-s p{font:400 16px var(--inter)}.empty-s .sbtn{max-width:553px;margin-top:10px}
 
 /* Sheets (search, filter) */
-.sscrim{position:fixed;inset:0;z-index:60;background:#0000007a;animation:fade .25s both}
+.sscrim{position:fixed;inset:0;z-index:60;background:#0000007a;animation:fade .25s both;color:#000;font-family:var(--inter)}
 .sheet{position:absolute;left:0;right:0;top:min(197px,22vh);background:var(--cream);padding:8px 24px 40px;max-height:calc(100vh - min(197px,22vh));overflow-y:auto;animation:drop .35s var(--ease) both}
 .sheet-handle{display:block;width:52px;height:5px;border-radius:3px;background:#A2A08E;margin:0 auto 14px}
 .sheet.search{padding:8px 16px 50px}
@@ -716,3 +716,266 @@ a:hover .pimg.has2 .pimg-b{opacity:1}
   .spanel .swatches{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:16px 6px;justify-content:start}
   .spanel .swatches button{width:auto;min-width:0}
 }
+
+/* Menu + search live at page level now: their own colours and top bar */
+.mmenu{z-index:70;color:#000}
+.mmenu-panel{padding:0 24px 28px}
+.mmenu-top{position:sticky;top:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:68px;margin:0 -24px 14px;padding:0 20px;background:var(--cream);border-bottom:1px solid #0000001a}
+.mmenu-x{width:36px;height:36px;position:relative}
+.mmenu-x i{position:absolute;left:4px;right:4px;top:50%;height:1.5px;background:#000}
+.mmenu-x i:first-child{transform:rotate(45deg)}.mmenu-x i:last-child{transform:rotate(-45deg)}
+.mmenu-logo{color:#000;display:block}
+.mmenu-icons{display:flex;align-items:center;justify-content:flex-end;gap:20px;font:500 13px var(--inter);text-transform:uppercase}
+.mmenu-icons button{display:flex}
+.sq-close{display:none;font:500 12px var(--inter);text-transform:uppercase;letter-spacing:.06em;margin-left:14px;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:820px){
+  /* Search: full-screen panel with the box at the top, so the phone keyboard never covers it */
+  .sheet.search{top:0;bottom:auto;height:100dvh;max-height:none;padding:14px 18px 40px;animation-name:fade}
+  .sheet.search .sheet-handle{display:none}
+  .sq{margin:4px 0 0}.sq-close{display:block}
+  .sq input{font-size:17px}
+  .sq-lab{margin:28px 0 4px}
+}
+.fcols{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px 2px;justify-items:center}
+.fcols button{width:auto;max-width:100%}
+.fcols button{white-space:normal;text-align:center;line-height:1.25}
+
+/* ===== Hero v3: the model stays clear =====
+   Desktop: compact text block in the lower-left corner, beside the model.
+   Phone: photo stays clean with only the main button on it; the headline sits in a calm band below the photo. */
+.shero2-copy{display:flex;flex-direction:column;align-items:flex-start;padding:0 56px 72px}
+.shero2-text{max-width:500px}
+.shero2 h1{font-size:clamp(28px,3vw,44px);line-height:1.12;max-width:none}
+.shero2 p{font-size:clamp(14px,1.1vw,17px);margin:14px 0 26px;max-width:42ch}
+.shero2-eyebrow{margin-bottom:16px}
+.shero2::before{background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 34%,rgba(0,0,0,0) 58%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 40%),var(--img) center 30%/cover}
+.sbtn.hbtn{min-height:46px;padding:0 22px;gap:22px;font-size:12px}
+@media(max-width:820px){
+  .home .shero2{display:block;min-height:0;padding-top:min(82svh,700px);color:#000;background:var(--cream)}
+  .home .shero2::before{bottom:auto;height:min(82svh,700px);background:linear-gradient(0deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 32%),linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,0) 20%),var(--img) center top/cover}
+  .home .shero2-copy{display:block;padding:0}
+  .home .shero2-cta{position:absolute;left:0;right:0;top:calc(min(82svh,700px) - 118px);display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 20px}
+  .home .sbtn.hbtn{width:auto;min-width:210px;min-height:46px;justify-content:center;gap:16px;background:#000;color:var(--cream)}
+  .home .sbtn.hbtn.outline{min-height:0;min-width:0;padding:0 0 3px;background:none;border:0;border-bottom:1px solid var(--cream);color:var(--cream);font:500 11px var(--inter);letter-spacing:.1em;gap:10px;backdrop-filter:none}
+  .home .sbtn.hbtn.outline::before{display:none}
+  .home .sbtn.hbtn.outline .arrow{width:16px}
+  .home .shero2-text{max-width:none;text-align:center;padding:40px 24px 8px;color:#000}
+  .home .shero2-eyebrow{color:#6d6758;opacity:1;font-size:10.5px;letter-spacing:.22em;margin-bottom:14px}
+  .home .shero2 h1{font-size:clamp(24px,7vw,29px);line-height:1.22;letter-spacing:.03em}
+  .home .shero2 p{font-size:15px;margin:12px auto 0;max-width:30ch;opacity:1}
+}
+
+/* Header v3: always there; translucent cream once the page scrolls */
+.hdr{transition:background-color .35s var(--ease),color .35s var(--ease),padding .35s var(--ease),box-shadow .35s var(--ease)}
+.hdr .mark{transition:width .35s var(--ease)}
+.hdr.stuck{position:fixed;animation:none;background:rgba(230,227,206,.86);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);color:#000!important;box-shadow:0 1px 0 #0000001a;padding-top:12px;padding-bottom:12px;align-items:center}
+.hdr.stuck .hdr-logo{color:#000!important}
+.hdr.stuck .hdr-nav,.hdr.stuck .hdr-icons{margin-top:0}
+.hdr.stuck .hdr-logo .mark{width:40px}
+.hdr.onsplit.stuck .hdr-icons{color:#000!important}
+@media(max-width:820px){.hdr.stuck{padding:12px 20px}.piece.store .hdr.stuck:not(.open) .hdr-icons{color:#000}}
+
+/* Featured cards: one clear action (Request a piece / Add to bag), per the updated design */
+.fcard-cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:9px 12px;background:#000;color:var(--cream);font:400 13px var(--inter);text-transform:uppercase;letter-spacing:.04em;transition:color .4s var(--ease)}
+.fcard-cta::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--tan2);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.fcard-cta:hover:not(:disabled){color:#000}.fcard-cta:hover:not(:disabled)::before{transform:scaleX(1);transform-origin:left}
+.fcard-cta:disabled{opacity:.45;cursor:not-allowed}
+.fcard-cta .nea{width:10px;height:10px}
+
+/* Collection cards: lighter shading only where the words sit, so faces stay clear */
+.ccard::before{background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.28) 66%,rgba(0,0,0,.62) 100%)}
+.ccard-bg{background-position:center 22%}
+.ccard-body h3,.ccard-body p,.ccard-badge{text-shadow:0 1px 10px rgba(0,0,0,.35)}
+
+@media(max-width:820px){
+  /* Featured on phones: one per row, as in the updated design */
+  .home .fgrid{grid-template-columns:1fr;gap:26px 0}
+  .home .fgrid>:nth-child(n+4){display:none}
+  .home .fcard{background:var(--cream);box-shadow:0 1px 0 #0000001a,0 6px 18px #00000024;border:1px solid #0000000f}
+  .home .fcard-img{aspect-ratio:8/7}
+  .home .fcard .tag{top:14px;left:14px;font-size:11px;padding:5px 8px}
+  .home .fcard .fheart{width:34px;height:34px;top:14px;right:14px}
+  .home .fcard-body{padding:20px 20px 24px}
+  .home .fcard-body small{font-size:12px;color:#000}
+  .home .fcard-body h3{font-size:clamp(18px,5.4vw,22px);margin:10px 0 10px}
+  .home .fcard-body b{font-size:clamp(22px,6.6vw,27px);font-weight:800}
+  .fcard-cta{font-size:13px;padding:10px 12px}
+  /* Collections on phones: taller photo, words only at the very bottom */
+  .cstack .ccard{aspect-ratio:4/5;max-height:72svh}
+}
+
+/* The header lives inside the hero (home, story). Keep that whole layer above the page so the
+   fixed header is never covered by later sections (buttons, FAQ, slide-ins) while scrolling. */
+.shero2,.stoh{z-index:20}
+
+/* Collection cards v4 (Fruché-style): the photo fills the card; words sit on a soft see-through shade at the bottom */
+.ccard{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;background:#2a1d14;isolation:isolate;overflow:hidden}
+.ccard-bg{position:absolute;inset:0;z-index:-2;aspect-ratio:auto;background-position:center 18%;transition:transform 1.2s var(--ease)}
+.ccard:hover .ccard-bg{transform:scale(1.05);filter:none}
+.ccard::before{display:block!important;content:''!important;position:absolute;inset:0;z-index:-1;opacity:1!important;background:linear-gradient(180deg,rgba(12,8,5,0) 38%,rgba(12,8,5,.28) 55%,rgba(12,8,5,.62) 75%,rgba(12,8,5,.86) 100%)!important}
+.ccard-body{padding:0 18px 18px;display:block;flex:none}
+.ccard-badge{position:static!important;display:block;margin:0 0 6px!important;font:600 10px var(--inter)!important;letter-spacing:.14em;color:var(--cream);opacity:.9}
+.ccard h3{font:500 clamp(20px,1.7vw,24px)/1.15 var(--cinzel);letter-spacing:.03em;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.ccard p{font:400 13px/1.4 var(--play);margin:6px 0 12px;-webkit-line-clamp:1;opacity:.92;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.ccard .chip{background:none;color:var(--cream);padding:0 0 2px;border-bottom:1px solid currentColor;font:500 11px var(--inter);letter-spacing:.1em;gap:10px}
+.ccard .chip::before{display:none}
+.ccard:hover .chip{color:var(--cream);gap:16px}
+.ccard .chip .arrow{width:16px}
+@media(max-width:820px){
+  .cstack .ccard{aspect-ratio:4/5;max-height:74svh;box-shadow:0 4px 14px #00000026;margin-left:0}
+  .cstack .ccard-bg{aspect-ratio:auto}
+  .cstack .ccard-body{padding:0 16px 16px}
+  .cstack .ccard h3{font-size:22px}
+  .cstack .ccard p{font-size:13px;margin:6px 0 12px}
+  .cstack .chip{font-size:11px;padding:0 0 2px;gap:10px}
+  .cstack .ccard-badge{top:auto;right:auto;font-size:10px}
+}
+.ccard h3,.ccard p,.ccard .ccard-badge,.ccard .chip{color:#fff}
+.ccard h3{font-weight:600}
+
+/* ===== Premium compact layout for phones & tablets (Fruché-style): smaller cards, quieter type ===== */
+@media(max-width:820px){
+  .home .sect>.stitle{font-size:clamp(22px,5.6vw,30px);letter-spacing:.02em;line-height:1.2}
+  .stitle{font-size:clamp(24px,6vw,34px)}
+  .stitle.sm{font-size:clamp(20px,5vw,26px)}
+  /* Collections: a neat swipe row, one and a bit cards on screen */
+  .cstack{display:grid;grid-auto-flow:column;grid-auto-columns:min(72%,300px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;margin:24px -20px 0;padding:0 20px 6px;scrollbar-width:none}
+  .cstack::-webkit-scrollbar{display:none}
+  .cstack .ccard{aspect-ratio:3/4;max-height:none;margin:0;box-shadow:none;scroll-snap-align:start}
+  .cstack .ccard-body{padding:0 14px 14px}
+  .cstack .ccard-badge{font-size:9px}
+  .cstack .ccard h3{font-size:18px}
+  .cstack .ccard p{font-size:12px;margin:4px 0 10px}
+  .cstack .chip{font-size:10px}
+  /* Featured: two per row, clean product tiles with no boxes */
+  .home .fgrid{grid-template-columns:1fr 1fr;gap:26px 10px;margin-top:26px}
+  .home .fgrid>:nth-child(n+4){display:block}
+  .home .fgrid>:nth-child(n+5){display:none}
+  .home .fcard{background:transparent;box-shadow:none;border:0}
+  .home .fcard-img{aspect-ratio:3/4}
+  .home .fcard .tag{top:8px;left:8px;font-size:9px;padding:3px 6px;letter-spacing:.06em}
+  .home .fcard .fheart{width:28px;height:28px;top:8px;right:8px}
+  .home .fcard-body{padding:10px 0 0}
+  .home .fcard-body small{font-size:9.5px;letter-spacing:.1em;color:#6d6758}
+  .home .fcard-body h3{font-size:13px;line-height:1.3;margin:4px 0 4px;letter-spacing:.03em}
+  .home .fcard-body b{font-size:13.5px;font-weight:500}
+  .home .fcard-cta,.fcard-cta{font-size:10px;padding:8px 6px;margin-top:10px;letter-spacing:.08em}
+  /* Shop grid tiles follow the same quiet type */
+  .pc h3{font-size:13px}
+}
+@media(min-width:600px) and (max-width:820px){
+  .home .fgrid{grid-template-columns:repeat(4,1fr);gap:26px 12px}
+  .cstack{grid-auto-columns:min(42%,300px)}
+}
+
+/* ===================== Minimal pass: one width, one rhythm, quieter type ===================== */
+.home{--wrap:1180px}
+.home .sect{max-width:calc(var(--wrap) + 80px);margin:0 auto;padding:96px 40px 0}
+.home .sect>.eyebrow{font-size:11px;letter-spacing:.18em}
+.home .sect>.stitle{font-size:clamp(24px,2.3vw,34px);letter-spacing:.04em;margin-top:12px}
+.home .sect>.stitle.sc{text-transform:uppercase}
+/* Collections: four aligned portrait cards, no shadows */
+.home .rail{margin-top:40px}
+.home .rail-track{gap:14px;grid-auto-columns:calc((100% - 3 * 14px) / 4);padding:0}
+.home .ccard{aspect-ratio:3/4;box-shadow:none}
+.home .ccard h3{font-size:clamp(16px,1.3vw,19px)}
+.home .ccard p{font-size:12px;margin:4px 0 10px}
+.home .ccard-body{padding:0 16px 16px}
+.home .ccard .chip{font-size:10px}
+.home .rail-btn{width:38px;height:38px;box-shadow:none;top:calc(50% - 19px)}
+.home .rail-btn.r{right:-19px}.home .rail-btn.l{left:-19px}
+/* Featured: flat aligned product tiles, no stagger, no boxes */
+.home .fgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 14px;margin:40px 0 0;justify-content:stretch}
+.home .fgrid>:nth-child(even){margin-top:0}
+.home .fcard{background:transparent;box-shadow:none}
+.home .fcard:hover{box-shadow:none}
+.home .fcard-img{aspect-ratio:3/4}
+.home .fcard .tag{top:10px;left:10px;font-size:9.5px;padding:3px 7px;letter-spacing:.08em}
+.home .fcard .fheart{width:30px;height:30px;top:10px;right:10px}
+.home .fcard-body{padding:12px 0 0}
+.home .fcard-body small{font-size:10px;letter-spacing:.12em;color:#7a7364}
+.home .fcard-body h3{font-size:14px;letter-spacing:.04em;margin:5px 0 4px}
+.home .fcard-body b{font-size:14px;font-weight:500}
+.home .fcard-cta{margin-top:12px;padding:9px 8px;font-size:10.5px;letter-spacing:.1em;background:transparent;color:#000;border:1px solid #000}
+.home .fcard-cta::before{background:#000}
+.home .fcard-cta:hover:not(:disabled){color:var(--cream)}
+.home .fcard-cta:disabled{border-color:#0004;color:#0008}
+/* Small centred buttons instead of full-width black bars */
+.home .sect>.sbtn.wide,.home .house-copy .sbtn,.letters .sbtn{width:auto;display:inline-flex;min-height:44px;padding:0 26px;gap:22px;font-size:12px;letter-spacing:.14em;max-width:none}
+.home .sect>.sbtn.wide{margin:48px auto 0;display:flex;width:max-content}
+/* Marquee: a quiet band, not a headline */
+.home .steps{margin-top:96px}
+.home .marq-track p{font-size:clamp(18px,1.8vw,24px);letter-spacing:.08em;padding:14px 0}
+/* House */
+.home .house{max-width:calc(var(--wrap) + 80px);padding:96px 40px 0;gap:clamp(30px,6vw,90px)}
+.home .house-img{box-shadow:none;aspect-ratio:4/5;max-height:560px}
+.home .house-copy .stitle{font-size:clamp(24px,2.3vw,34px);letter-spacing:.04em;margin:12px 0 20px}
+.home .house-copy p{font-size:14.5px;line-height:1.8;max-width:460px}
+.home .house-copy .sbtn{margin-top:30px}
+/* FAQ: a simple list on the page background */
+.home .faq{max-width:calc(820px + 80px);padding:96px 40px 96px}
+.home .faq-head,.home .faq-list{background:transparent}
+.home .faq-head{padding:0;text-align:center}
+.home .faq-head h2{font-size:clamp(24px,2.3vw,34px);letter-spacing:.04em}
+.home .faq-head h2::after{display:none}
+.home .faq-intro{text-align:center;font-size:14px;color:#5d584c;padding:12px 0 26px}
+.home .faq-list{padding:0;border-top:1px solid #0000001f}
+.home .faq-q{font-size:13.5px;letter-spacing:.06em;padding:18px 0}
+/* Newsletter: compact, centred */
+.letters{padding:56px 24px}
+.letters h2{font-size:clamp(20px,2vw,26px);max-width:none;letter-spacing:.06em}
+.letters>p{font-size:13px;max-width:340px;margin-top:14px}
+.letters form{max-width:440px;margin:26px auto 0;display:flex;align-items:flex-end;gap:12px}
+.letters input{flex:1;font-size:14px}.letters input::placeholder{font-size:13px;letter-spacing:.06em}
+.letters .sbtn{margin-top:0;flex:none}
+.letters .err{flex-basis:100%}
+@media(max-width:820px){
+  .home .sect{padding:64px 20px 0}
+  .home .sect>.stitle{font-size:clamp(20px,5.4vw,26px);text-align:left}
+  .home .sect>.eyebrow{text-align:left}
+  .home .fgrid{grid-template-columns:1fr 1fr;gap:28px 10px;margin-top:24px}
+  .home .fcard-body h3{font-size:12.5px}.home .fcard-body b{font-size:13px}
+  .home .fcard-cta{font-size:9.5px;padding:8px 4px;letter-spacing:.08em}
+  .home .sect>.sbtn.wide{margin-top:34px}
+  .home .steps{margin-top:64px}
+  .home .marq-track p{font-size:16px;padding:10px 0}
+  .home .house{grid-template-columns:1fr;padding:64px 20px 0;gap:26px}
+  .home .house-img{max-height:none;aspect-ratio:4/3}
+  .home .house-copy .stitle{font-size:clamp(20px,5.4vw,26px)}
+  .home .house-copy p{font-size:14px}
+  .home .faq{padding:64px 20px}
+  .home .faq-head,.home .faq-intro{text-align:left}
+  .home .faq-head h2{font-size:clamp(20px,5.4vw,26px)}
+  .home .faq-q{font-size:12.5px;padding:16px 0}
+  .letters{padding:44px 20px}
+  .letters form{flex-direction:column;align-items:stretch}
+  .letters .sbtn{justify-content:center;width:100%}
+}
+@media(min-width:600px) and (max-width:820px){.home .fgrid{grid-template-columns:repeat(4,1fr)}}
+.letters form{flex-wrap:wrap}.letters .err{order:3;margin:6px 0 0}
+/* Footer: centred and compact */
+.ftr{padding:56px 24px 22px;text-align:center}
+.ftr-top,.ftr-legal{display:flex!important;justify-content:center!important;flex-wrap:wrap;gap:10px 32px!important;max-width:900px;margin-left:auto;margin-right:auto}
+.ftr-top a,.ftr-legal a{font-size:12px!important;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;opacity:.85}
+.ftr-top a:hover,.ftr-legal a:hover{opacity:1;text-decoration:underline!important}
+.ftr-brand svg{width:56px!important;height:auto}
+.ftr-brand b,.ftr-brand strong{font-size:15px!important;letter-spacing:.3em!important}
+.ftr-brand{margin:30px auto 0!important}
+.ftr-tag{font-size:13px!important;opacity:.8;margin:14px 0 30px!important}
+.ftr-legal a{font-size:11px!important;opacity:.65}
+.ftr-copy{font-size:11px!important;opacity:.55;border-top:1px solid #ffffff1f;padding-top:18px;margin-top:26px!important;max-width:900px;margin-left:auto!important;margin-right:auto!important}
+.home .spacer{height:0}
+.home .faq-a p{font-size:13.5px;line-height:1.75;color:#4a463c}
+@media(max-width:820px){
+  .home .letters{margin:0;padding:44px 20px 40px}
+  .home .letters h2{font-size:clamp(19px,5.2vw,22px);max-width:none;line-height:1.3}
+  .home .letters>p{font-size:13px;line-height:1.7}
+  .home .letters form{margin-top:24px}
+  .home .letters input::placeholder{color:#6f604c}
+  .home .letters .sbtn{margin-top:14px}
+  .home .marq-track p,.home .marq-track b{font:400 14px/1.1 var(--cinzel);letter-spacing:.1em}
+  .home .faq-intro{font-size:13px}
+  .home .faq-q{font-size:12px}
+  .home .faq a.chip,.home .faq>a{font-size:11px}
+}
+.home .faq .faq-item .faq-a p{font-size:13.5px;line-height:1.75}

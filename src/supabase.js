@@ -17,7 +17,7 @@ export const MEASURES = [
   ['waist', 'Waist'], ['top', 'Top length'], ['trouser', 'Trouser length'],
 ]
 
-const DB_KEY = 'huoma.demo.db.v4', SES_KEY = 'huoma.demo.session'
+const DB_KEY = 'huoma.demo.db.v5', SES_KEY = 'huoma.demo.session'
 const wait = (ms = 350) => new Promise(r => setTimeout(r, ms))
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36))
 const clone = v => JSON.parse(JSON.stringify(v))
