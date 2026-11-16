@@ -953,17 +953,6 @@ a:hover .pimg.has2 .pimg-b{opacity:1}
 }
 @media(min-width:600px) and (max-width:820px){.home .fgrid{grid-template-columns:repeat(4,1fr)}}
 .letters form{flex-wrap:wrap}.letters .err{order:3;margin:6px 0 0}
-/* Footer: centred and compact */
-.ftr{padding:56px 24px 22px;text-align:center}
-.ftr-top,.ftr-legal{display:flex!important;justify-content:center!important;flex-wrap:wrap;gap:10px 32px!important;max-width:900px;margin-left:auto;margin-right:auto}
-.ftr-top a,.ftr-legal a{font-size:12px!important;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;opacity:.85}
-.ftr-top a:hover,.ftr-legal a:hover{opacity:1;text-decoration:underline!important}
-.ftr-brand svg{width:56px!important;height:auto}
-.ftr-brand b,.ftr-brand strong{font-size:15px!important;letter-spacing:.3em!important}
-.ftr-brand{margin:30px auto 0!important}
-.ftr-tag{font-size:13px!important;opacity:.8;margin:14px 0 30px!important}
-.ftr-legal a{font-size:11px!important;opacity:.65}
-.ftr-copy{font-size:11px!important;opacity:.55;border-top:1px solid #ffffff1f;padding-top:18px;margin-top:26px!important;max-width:900px;margin-left:auto!important;margin-right:auto!important}
 .home .spacer{height:0}
 .home .faq-a p{font-size:13.5px;line-height:1.75;color:#4a463c}
 @media(max-width:820px){
@@ -979,3 +968,23 @@ a:hover .pimg.has2 .pimg-b{opacity:1}
   .home .faq a.chip,.home .faq>a{font-size:11px}
 }
 .home .faq .faq-item .faq-a p{font-size:13.5px;line-height:1.75}
+
+/* Buttons: words only, centred (no arrows) */
+.sbtn{justify-content:center;text-align:center}
+.sbtn>.arrow:not(.back){display:none}
+/* Footer links: Title Case, underlined so they read as links */
+.ftr-top a,.ftr-legal a{text-transform:none;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:820px){
+  /* Hero words below the photo are hidden on phones (kept for screen readers and search) */
+  .home .shero2-text{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;padding:0!important;margin:0}
+  /* Collections: stacked vertically, full width */
+  .cstack{display:flex;flex-direction:column;gap:14px;overflow:visible;margin:24px 0 0;padding:0;scroll-snap-type:none}
+  .cstack .ccard{width:100%;aspect-ratio:4/5;max-height:72svh}
+  .cstack .ccard h3{font-size:20px}
+  .cstack .ccard p{font-size:13px}
+}
+/* Collection card "Shop" as a solid cream button (as in the design) */
+.ccard .chip,.cstack .ccard .chip{display:inline-flex;align-items:center;gap:14px;background:var(--cream);color:#000;border:0;padding:8px 14px;font:500 12px var(--inter);letter-spacing:.06em;text-transform:uppercase;text-shadow:none;transition:background .3s,color .3s,gap .3s var(--ease)}
+.ccard:hover .chip{background:#000;color:var(--cream);gap:20px}
+.ccard .chip .arrow{width:22px}
+@media(max-width:820px){.cstack .ccard .chip{font-size:12px;padding:9px 14px}}

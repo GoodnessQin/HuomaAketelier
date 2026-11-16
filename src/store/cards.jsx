@@ -85,8 +85,8 @@ export function FeaturedCard({ p, collection }) {
         <h3><Link to={`/piece/${p.slug}`}>{p.name}</Link></h3>
         <b>{naira(p.price)}</b>
         {a === 'made'
-          ? <Link className="fcard-cta" to={`/piece/${p.slug}`} state={{ choose: true }}>Request a piece <NE /></Link>
-          : <button className="fcard-cta" onClick={add} disabled={a === 'out'}>{a === 'out' ? 'Out of stock' : <>Add to bag <span aria-hidden="true">+</span></>}</button>}
+          ? <Link className="fcard-cta" to={`/piece/${p.slug}`} state={{ choose: true }}>Request a piece</Link>
+          : <button className="fcard-cta" onClick={add} disabled={a === 'out'}>{a === 'out' ? 'Out of stock' : 'Add to bag'}</button>}
       </div>
     </article>
   )
